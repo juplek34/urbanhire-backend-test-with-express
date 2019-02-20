@@ -7,22 +7,27 @@ const first = (req,res) => {
   const searchData = data.filter((item) => {
     return item.toLowerCase().includes(req.query.search.toLowerCase())
   })
-  res.json(searchData)
+
+  if(searchData.length===0){
+    res.json('empty')
+  } else {
+    res.json(searchData)
+  }
 };
 
-const second = async (req,res) => {
+const second = (req,res) => {
   res.json('No 2')
 };
 
-const third = async (req,res) => {
+const third = (req,res) => {
   res.json('No 3')
 };
 
-const fourth = async (req,res) => {
+const fourth = (req,res) => {
   res.json('No 4')
 };
 
-const fifth = async (req,res) => {
+const fifth = (req,res) => {
   res.json('No 5')
 };
 
