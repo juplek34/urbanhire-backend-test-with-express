@@ -45,7 +45,8 @@ const third = (req,res) => {
 };
 
 const fourth = (req,res) => {
-  res.json('No 4')
+  const regex = new RegExp(/a-z/)
+  console.log(regex.test(req.query.search))
 };
 
 const fifth = (req,res) => {
