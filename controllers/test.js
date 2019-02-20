@@ -31,7 +31,7 @@ const second = (req,res) => {
 
 const third = (req,res) => {
   if(req.query.search.length < 3 || req.query.search.length > 50){
-    res.json('3 - 50 characters')
+    res.status(400).json('3 - 50 characters')
   } else {
     const searchData = data.filter((item) => {
       return item.toLowerCase().includes(req.query.search.toLowerCase())
