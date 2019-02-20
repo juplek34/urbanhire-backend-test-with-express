@@ -39,7 +39,28 @@ const second = (req,res) => {
 };
 
 const third = (req,res) => {
-  res.json('No 3')
+  if(Object.keys(req.query).length === 0){
+    res.json(data)
+  } else if(Object.keys(req.query).length > 1){
+    res.json('Params only 1 is search')
+  } else {
+    if(Object.keys(req.query)[0]!=='search'){
+      res.json('Not found')
+    } else {
+      if(req.query.search.length < 3 || req.query.search.length > 50){
+        res.json('3 - 50 characters')
+      } else {
+        const searchData = data.filter((item) => {
+          return item.toLowerCase().includes(req.query.search.toLowerCase())
+        })
+        if(searchData.length===0){
+          res.json('empty')
+        } else {
+          res.json(searchData)
+        }
+      }
+    }
+  }
 };
 
 const fourth = (req,res) => {
