@@ -5,6 +5,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const testRouter = require('./routes/test');
+const middleware = require('./middlewares/checkParams');
 
 const app = express();
 
@@ -15,6 +16,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/test', testRouter);
+app.use('/test',  middleware.checkParams, testRouter);
 
 module.exports = app;
