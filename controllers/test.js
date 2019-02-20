@@ -22,24 +22,29 @@ const first = (req,res) => {
 };
 
 const second = (req,res) => {
-  if(!req.query.search){
+  if(Object.keys(req.query).length === 0){
     res.json(data)
-  } else{
-    const searchData = data.filter((item) => {
-      const splitString = item.split(' ')
-      let itemFromSplit
-      splitString.map(i => {
-        if(i.toLowerCase()===req.query.search.toLowerCase()){
-          itemFromSplit = item
-        }
-      })
-      return item===itemFromSplit
-    })
-  
-    if(searchData.length===0){
-      res.json('empty')
+  } else if(Object.keys(req.query).length > 1){
+    res.json('Params only 1 is search')
+  } else {
+    if(Object.keys(req.query)[0]!=='search'){
+      res.json('Not found')
     } else {
-      res.json(searchData)
+      const searchData = data.filter((item) => {
+        const splitString = item.split(' ')
+        let itemFromSplit
+        splitString.map(i => {
+          if(i.toLowerCase()===req.query.search.toLowerCase()){
+            itemFromSplit = item
+          }
+        })
+        return item===itemFromSplit
+      })
+      if(searchData.length===0){
+        res.json('empty')
+      } else {
+        res.json(searchData)
+      }
     }
   }
 };
