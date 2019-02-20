@@ -16,7 +16,26 @@ const first = (req,res) => {
 };
 
 const second = (req,res) => {
-  res.json('No 2')
+  if(!req.query.search){
+    res.json(data)
+  } else{
+    const searchData = data.filter((item) => {
+      const splitString = item.split(' ')
+      let itemFromSplit
+      splitString.map(i => {
+        if(i.toLowerCase()===req.query.search.toLowerCase()){
+          itemFromSplit = item
+        }
+      })
+      return item===itemFromSplit
+    })
+  
+    if(searchData.length===0){
+      res.json('empty')
+    } else {
+      res.json(searchData)
+    }
+  }
 };
 
 const third = (req,res) => {
