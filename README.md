@@ -12,7 +12,7 @@ npm start
 ## EndPoint
 
 * **No 1** <br>
-`GET` `/test/first?search=`<i>keyword</i>
+`GET` `/test/first?search='keyword'`
 
 * **No 2** <br>
 `GET` `/test/second?search='keyword'`
@@ -25,3 +25,7 @@ npm start
 
 * **No 5** <br>
 `GET` `/test/fifth?search='keyword'`
+
+## Example
+
+`GET` `/test/first?search=marketing`
