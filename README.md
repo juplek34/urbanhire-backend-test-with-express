@@ -1,19 +1,16 @@
 ## Setup
 
 Clone the repo
-```js
-git clone https://github.com/ariefyusron/urbanhire-backend-test-with-express.git <project_name>
-```
+
+`git clone https://github.com/ariefyusron/urbanhire-backend-test-with-express.git <project_name>`
 
 Open directory
-```js
-cd <project_name>
-```
+
+`cd <project_name>`
 
 and then run
-```js
-npm install
-```
+
+`npm install`
 
 
 ## Start Server
