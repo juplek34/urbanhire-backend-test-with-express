@@ -45,8 +45,19 @@ const third = (req,res) => {
 };
 
 const fourth = (req,res) => {
-  const regex = new RegExp(/a-z/)
-  console.log(regex.test(req.query.search))
+  const regex = /^[a-zA-Z0-9\-\.\,\ ]+$/
+  if(!req.query.search.match(regex)){
+    res.status(400).json('Keyword only allow alphabetical and numeric characters, dash, dot, comma')
+  } else {
+    const searchData = data.filter((item) => {
+      return item.toLowerCase().includes(req.query.search.toLowerCase())
+    })
+    if(searchData.length===0){
+      res.json('empty')
+    } else {
+      res.json(searchData)
+    }
+  }
 };
 
 const fifth = (req,res) => {
