@@ -12,9 +12,9 @@ npm start
 ## EndPoint
 
 ```js
-/test/first
-/test/second
-/test/third
-/test/fourth
-/test/fifth
+/test/first?search='keyword'
+/test/second?search='keyword'
+/test/third?search='keyword'
+/test/fourth?search='keyword'
+/test/fifth?search='keyword'
 ```
