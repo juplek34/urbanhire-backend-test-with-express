@@ -13,12 +13,15 @@ const first = (req,res) => {
 
 const second = (req,res) => {
   const searchData = data.filter((item) => {
+    const splitQuery = req.query.search.split(' ')
     const splitString = item.split(' ')
     let itemFromSplit
-    splitString.map(i => {
-      if(i.toLowerCase()===req.query.search.toLowerCase()){
-        itemFromSplit = item
-      }
+    splitQuery.map(i => {
+      splitString.map(j => {
+        if(j.toLowerCase()===i.toLowerCase()){
+          itemFromSplit = item
+        }
+      })
     })
     return item===itemFromSplit
   })
@@ -34,7 +37,17 @@ const third = (req,res) => {
     res.status(400).json('3 - 50 characters')
   } else {
     const searchData = data.filter((item) => {
-      return item.toLowerCase().includes(req.query.search.toLowerCase())
+      const splitQuery = req.query.search.split(' ')
+      const splitString = item.split(' ')
+      let itemFromSplit
+      splitQuery.map(i => {
+        splitString.map(j => {
+          if(j.toLowerCase()===i.toLowerCase()){
+            itemFromSplit = item
+          }
+        })
+      })
+      return item===itemFromSplit
     })
     if(searchData.length===0){
       res.json('empty')
@@ -50,7 +63,17 @@ const fourth = (req,res) => {
     res.status(400).json('Keyword only allow alphabetical and numeric characters, dash, dot, comma')
   } else {
     const searchData = data.filter((item) => {
-      return item.toLowerCase().includes(req.query.search.toLowerCase())
+      const splitQuery = req.query.search.split(' ')
+      const splitString = item.split(' ')
+      let itemFromSplit
+      splitQuery.map(i => {
+        splitString.map(j => {
+          if(j.toLowerCase()===i.toLowerCase()){
+            itemFromSplit = item
+          }
+        })
+      })
+      return item===itemFromSplit
     })
     if(searchData.length===0){
       res.json('empty')
