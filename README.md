@@ -11,10 +11,5 @@ npm start
 
 ## EndPoint
 
-```js
-/test/first?search='keyword'
-/test/second?search='keyword'
-/test/third?search='keyword'
-/test/fourth?search='keyword'
-/test/fifth?search='keyword'
-```
+* **First**
+`GET` `/test/first?search='keyword'`
